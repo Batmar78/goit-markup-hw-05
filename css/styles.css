@@ -32,6 +32,7 @@ html {
   --social-network-color: #afb1b8;
   --card-gap: 30px;
   --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --time-animation: 250ms;
 }
 
 body {
@@ -137,6 +138,7 @@ img {
   letter-spacing: 0.02em;
   color: var(--title-text-color);
   text-decoration: none;
+  transition: color var(--time-animation) var(--timing-function);
 }
 
 .mail-icon,
@@ -146,6 +148,7 @@ img {
   fill: currentColor;
   background-size: contain;
   align-items: center;
+  transition: fill var(--time-animation) var(--timing-function);
 }
 
 .mail-icon:hover,
@@ -272,14 +275,18 @@ img {
   left: 692px;
   top: 430px;
   background-color: var(--accent-color);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: none;
+  border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color var(--time-animation) var(--timing-function),
+    box-shadow var(--time-animation) var(--timing-function);
 }
 
 .btn:hover,
 .btn:focus {
   background-color: #188ce8;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
 
 .btn-text {
@@ -298,26 +305,34 @@ img {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
+
+  opacity: 1;
+  transition: opacity var(--time-animation) var(--timing-function);
 }
 
 .backdrop.is-hidden {
-  visibility: hidden;
+  visibility: inherit;
   opacity: 0;
   pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(1.1);
 }
 
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-
   min-width: 528px;
   min-height: 581px;
   background-color: var(--primary-white-color);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform var(--time-animation) var(--timing-function);
 }
 
 .btn-modal-close {
@@ -478,8 +493,11 @@ img {
   align-items: center;
   width: 44px;
   height: 44px;
+  background-color: inherit;
   color: var(--social-network-color);
   border-radius: 50%;
+  transition: background-color var(--time-animation) var(--timing-function),
+    color var(--time-animation) var(--timing-function);
 }
 
 .icon-social-networks {
@@ -509,6 +527,8 @@ img {
   border-radius: 4px;
   justify-content: center;
   align-items: center;
+  transition: border var(--time-animation) var(--timing-function),
+    color var(--time-animation) var(--timing-function);
 }
 
 .klient > .thumb {
@@ -684,9 +704,14 @@ img {
   font-size: 16px;
   line-height: 1.6;
   background-color: var(--alt-background-color);
+  color: var(--title-text-color);
+  box-shadow: none;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color var(--time-animation) var(--timing-function),
+    color var(--time-animation) var(--timing-function),
+    box-shadow var(--time-animation) var(--timing-function);
 }
 
 .all:hover,
@@ -752,6 +777,8 @@ img {
   display: block;
   text-decoration: none;
   background-color: var(--primary-white-color);
+  box-shadow: none;
+  transition: box-shadow var(--time-animation) var(--timing-function);
 }
 
 .project-thumb {
@@ -767,7 +794,7 @@ img {
   opacity: 0;
   background-color: rgba(33, 150, 243, 0.9);
   transform: translateY(100%);
-  transition: transform 250ms var(--timing-function);
+  transition: transform var(--time-animation) var(--timing-function);
 }
 
 .project-description {
